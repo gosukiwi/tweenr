@@ -4,6 +4,8 @@
   "description": "Frontend Boilerplate",
   "main": "gulpfile.js",
   "dependencies": {
+  },
+  "devDependencies": {
     "browser-sync": "^1.3.0",
     "gulp": "^3.8.6",
     "gulp-autoprefixer": "^1.0.0",
@@ -12,9 +14,6 @@
     "gulp-imagemin": "^0.6.2",
     "gulp-less": "^1.3.3",
     "gulp-uglify": "^0.3.1"
-  },
-  "devDependencies": {
-    "gulp-rjs": "^0.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
