@@ -77,16 +77,6 @@ define([
     }
 
     return {
-      //init: function (dur, from, to, fn) {
-      //  ammountToAnimate    = to - from;
-      //  ammountFrom         = from;
-      //  duration            = dur;
-      //  animationFn         = fn;
-      //  start               = undefined;
-      //  elapsed             = 0;
-      //  isPaused            = false;
-      //},
-      
       init: function (props, dur, fn) {
         ammountToAnimate    = [];
         ammountFrom         = [];
