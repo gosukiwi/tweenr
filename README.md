@@ -37,7 +37,7 @@ You can also use `chain` to make a lot of sequential animations.
         dur: 1000,
         fn:  'linear'
       },
-      // Animation 2
+      // Animation 2, starts once Animation 1 is done
       { 
         props: [{ from: 300, to: 0 }, { from: 100, to: 0 }],
         dur: 1000,
@@ -46,13 +46,9 @@ You can also use `chain` to make a lot of sequential animations.
     ], render);
 
 ## Installation
-You'll need RequireJS and jQuery. To use simply
+You'll need RequireJS and jQuery. You can install tweenr using **bower**.
 
-    require(['tweenr'], function(tweenr) {
-      'use strict';
-      /* use tweenr... */
-    });
-
+    bower install tweenr
 
 ## Create build 
 To create a build file just use `r.js -o build.js`. It depends on jQuery and
