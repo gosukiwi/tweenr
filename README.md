@@ -1,5 +1,6 @@
 # Tweenr
-A simple property tween library. Use this to easily tween values!
+A tiny (3~kb minimized, 1.3~kb min+gzip) property tween library. Use this to
+easily tween values!
 
 ## Usage
 Tweenr is a tweening library which "animates" sets of properties in an easy
