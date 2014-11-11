@@ -54,4 +54,4 @@ now. You can install tweenr using **bower**.
 
 ## Create build 
 To create a build file just use `r.js -o build.js`. It depends on jQuery and
-RequireJS.
+RequireJS. Window users might need to run `r.js.cmd` instead.
