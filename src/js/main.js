@@ -3,7 +3,6 @@
 require.config({
   paths: {
     'jquery': '../../vendor/jquery/dist/jquery',
-    'pinkyswear': '../../vendor/pinkyswear/pinkyswear'
   }
 });
 
