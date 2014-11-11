@@ -46,7 +46,8 @@ You can also use `chain` to make a lot of sequential animations.
     ], render);
 
 ## Installation
-You'll need RequireJS and jQuery. You can install tweenr using **bower**.
+You'll need RequireJS or a similar AMD library in order to easily use tweenr for
+now. You can install tweenr using **bower**.
 
     bower install tweenr
 
