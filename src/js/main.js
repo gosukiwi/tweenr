@@ -2,8 +2,8 @@
 
 require.config({
   paths: {
-    //'text': '../../vendor/requirejs-text/text',
-    'jquery': '../../vendor/jquery/dist/jquery'
+    'jquery': '../../vendor/jquery/dist/jquery',
+    'pinkyswear': '../../vendor/pinkyswear/pinkyswear'
   }
 });
 

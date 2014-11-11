@@ -12,6 +12,8 @@ require(['jquery', 'tweenr'], function($, tweenr) {
   tweenr().animate([
     { from: 0, to: 50 },
     { from: 0, to: 100 },
-  ], 1000, 'square', render);
+  ], 1000, 'square', render).then(function () {
+    console.log('finished animation');
+  });
 
 });

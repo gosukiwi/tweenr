@@ -2,12 +2,12 @@
  * Tween a property
  */
 define([
-    'jquery', 
     'apply-fn',
     // requestAnimationFrame polyfill
-    'raf'
+    'raf',
+    // tiny promises implementation
+    'pinkyswear', 
   ], function (
-    $, 
     ApplyFn
   ) {
 
@@ -21,7 +21,7 @@ define([
     var ammountToAnimate;
     var ammountFrom;
     var animationFn;
-    var defer;
+    var promise;
     var isPaused;
     var pausedTime = 0;
     var pauseStart = 0;
@@ -47,7 +47,7 @@ define([
       currentTime = currentTime - pausedTime;
 
       if(elapsed > duration) {
-        defer.resolve(elapsed);
+        promise(true);
         return;
       }
 
@@ -94,9 +94,9 @@ define([
 
       start: function (cb) {
         stepCb   = cb;
-        defer    = $.Deferred();
+        promise  = window.pinkySwear();
         window.requestAnimationFrame(animate);
-        return defer.promise();
+        return promise;
       },
 
       pause: function () {
@@ -129,7 +129,7 @@ define([
       chain: function (arr, cb) {
         var self = this;
         var len  = arr.length;
-        var chainDeferred = $.Deferred();
+        var chainPromise = window.pinkySwear();
 
         function startPath(arr, cb) {
           if(!arr || arr.length === 0) {
@@ -142,13 +142,13 @@ define([
           }).then(function () {
             len = len - 1;
             if(len === 0) {
-              chainDeferred.resolve();
+              chainPromise(true);
             }
           });
         }
 
         startPath(arr, cb);
-        return chainDeferred.promise();
+        return chainPromise;
       }
     };
   };
