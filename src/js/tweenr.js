@@ -2,12 +2,12 @@
  * Tween a property
  */
 define([
+    'ticker',
     'apply-fn',
-    // requestAnimationFrame polyfill
-    'raf',
     // tiny promises implementation
     'pinkyswear', 
   ], function (
+    tweenrTicker,
     ApplyFn
   ) {
 
@@ -16,15 +16,11 @@ define([
   return function () {
     var duration;
     var stepCb;
-    var start;
-    var elapsed;
     var ammountToAnimate;
     var ammountFrom;
     var animationFn;
     var promise;
-    var isPaused;
-    var pausedTime = 0;
-    var pauseStart = 0;
+    var ticker;
 
     function applyFn(proportion, fn) {
       if(ApplyFn[fn]) {
@@ -34,38 +30,19 @@ define([
       return proportion;
     }
 
-    function animate(currentTime) {
-      if(isPaused) {
-        pauseStart = currentTime;
-        return;
-      }
-
-      if(pauseStart > 0) {
-        pausedTime = pausedTime + currentTime - pauseStart;
-        pauseStart = 0;
-      }
-      currentTime = currentTime - pausedTime;
-
+    function onTick(elapsed) {
       if(elapsed > duration) {
         promise(true);
+        ticker.stop();
         return;
       }
 
-      if(!start) {
-        start   = currentTime;
-        elapsed = 0;
-      } else {
-        elapsed = currentTime - start;
-      }
-
-      window.requestAnimationFrame(animate);
       // elapsed %
       var proportion = elapsed / duration;
       if(proportion > 1) {
         proportion = 1;
       }
       proportion = applyFn(proportion, animationFn);
-
 
       var i;
       var len = ammountToAnimate.length;
@@ -82,9 +59,7 @@ define([
         ammountFrom         = [];
         duration            = dur;
         animationFn         = fn;
-        start               = undefined;
-        elapsed             = 0;
-        isPaused            = false;
+        ticker              = tweenrTicker(onTick);
 
         props.forEach(function (prop) {
           ammountToAnimate.push(prop.to - prop.from);
@@ -95,27 +70,20 @@ define([
       start: function (cb) {
         stepCb   = cb;
         promise  = window.pinkySwear();
-        window.requestAnimationFrame(animate);
+        ticker.start();
         return promise;
       },
 
       pause: function () {
-        isPaused = true;
+        ticker.pause();
       },
 
       unpause: function () {
-        if(isPaused) {
-          isPaused = false;
-          window.requestAnimationFrame(animate);
-        }
+        ticker.unpause();
       },
 
       toggle: function () {
-        if(isPaused) {
-          this.unpause();
-        } else {
-          this.pause();
-        }
+        ticker.toggle();
       },
 
       animate: function (props, dur, fn, cb) {

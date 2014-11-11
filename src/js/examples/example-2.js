@@ -12,7 +12,7 @@ require(['jquery', 'tweenr'], function($, tweenr) {
     // Animation 1
     { 
       props: [{ from: 0, to: 300 }, { from: 0, to: 100 }],
-      dur: 1000,
+      dur: 2000,
       fn:  'linear'
     },
     // Animation 2
@@ -21,7 +21,9 @@ require(['jquery', 'tweenr'], function($, tweenr) {
       dur: 1000,
       fn:  'square'
     }
-  ], render);
+  ], render).then(function () {
+    animation.start();
+  });
   animation.pause();
 
   $title.on('click', function () {

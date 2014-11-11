@@ -63,3 +63,8 @@ now. You can install tweenr using **bower**.
 ## Create build 
 To create a build file just use `r.js -o build.js`. It depends on jQuery and
 RequireJS. Window users might need to run `r.js.cmd` instead.
+
+## Performance
+Tweenr is tiny and built on top of `requestAnimationFrame` and defaults to
+`setTimeout` if not available, so it should work fast. If you have performance
+issues please feel free to open a ticket.
