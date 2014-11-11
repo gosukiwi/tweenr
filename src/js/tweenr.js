@@ -33,6 +33,7 @@ define([
     function onTick(elapsed) {
       if(elapsed > duration) {
         promise(true);
+        // stops ticker, now elapsed back at 0
         ticker.stop();
         return;
       }
@@ -70,6 +71,7 @@ define([
       start: function (cb) {
         stepCb   = cb;
         promise  = window.pinkySwear();
+        // start ticker at 0 elapsed
         ticker.start();
         return promise;
       },

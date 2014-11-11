@@ -7,8 +7,7 @@ var browserSync = require('browser-sync');
 gulp.task('watch', function() {
   browserSync({
     server: {
-      baseDir: ['src', 'bower_components']/*,
-      host: '0.0.0.0'*/
+      baseDir: ['src']
     }
   });
 });

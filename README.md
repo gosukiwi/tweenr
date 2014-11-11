@@ -23,7 +23,7 @@ anything.
         // do something with the values, for example
         $('#some-element')
           .width(first + 'px')
-          .height(first + 'px')
+          .height(second + 'px')
         ;
       }
 
