@@ -2,6 +2,14 @@
 A tiny (3~kb minimized, 1.3~kb min+gzip) property tween library. Use this to
 easily tween values!
 
+## Why
+There are a lot of animation libraries out there, but they are bloated and have
+dependencies. jQuery works fine most of the time unless you want to animate
+complex CSS properties or just want a "ticker". CreateJS provides a tween
+library but it requires EaselJS or a custom ticker implementation. Tweenr was
+designed to just work and abstract from rendering so you can use any library you
+want for that, or even create your own implementation on top of tweenr.
+
 ## Usage
 Tweenr is a tweening library which "animates" sets of properties in an easy
 manner. It's abstracted from rendering, so you can use it for pretty much
