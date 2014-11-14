@@ -6,7 +6,7 @@
   ],
   "directory": "src/vendor",
   "description": "Tween properties",
-  "main": "src/js/tweenr.js",
+  "main": "dist/tweenr-full.js",
   "moduleType": [
     "amd"
   ],
